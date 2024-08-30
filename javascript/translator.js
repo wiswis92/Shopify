@@ -13,8 +13,7 @@ const BRAILLE_TO_ENGLISH = {
 function translate(input) {
   if (/^[O.]+$/.test(input)) {
     let result = '';
-    input = input.replace(/.{6}/g, '$& ').trim(); 
-
+    input = input.replace(/.{6}/g, '$& ').trim();
     input.split(' ').forEach(brailleChar => {
       result += BRAILLE_TO_ENGLISH[brailleChar] || '';
     });
@@ -32,6 +31,6 @@ function translate(input) {
   }
 }
 
-// Pour l'utiliser, on  doit faire comme ceci :
-console.log(translate("Hello World")); // Traduire de l'anglais au braille
-console.log(translate("O.....O.O.O.OOO...OOOO......O..O..O...OO.O...O..OO...")); // Traduire du braille à l'anglais
+// Lire les arguments de la ligne de commande
+const args = process.argv.slice(2).join(' ');
+console.log(translate(args));
